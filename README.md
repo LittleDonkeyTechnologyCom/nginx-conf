@@ -1,12 +1,12 @@
 # nginx 通用配置模板
 
-整理 [nginx][nginx] 配置模板，方便新项目复用，在此感谢 [旅销宝][旅销宝]，让我有机会使用 [nginx][nginx] 配置 https 服务，并且推广的能力。
+整理 [nginx][nginx] 通用配置模板，方便新项目复用，在此感谢 [旅销宝][旅销宝]，让我有机会使用 [nginx][nginx] 配置 https 服务，并且推广的能力。
 
 > 本项目仅在 windows 10 上测试成功，虽然我有 linux 服务器，可是我就是不尝试，你能拿我咋地 (#^.^#)。
 
 ## 目录结构
 
-```
+```bash
 nginx-conf/
 ├── url-filters/                 # 过滤器，主要用于拦截异常请求
 ├── sites-options/               # 公共可选配置
@@ -18,7 +18,7 @@ nginx-conf/
     └── dhparam.pem
 ```
 
-## 配置 Nginx
+## 引入配置文件
 
 > path/to 为 nginx 的安装目录
 
@@ -46,7 +46,7 @@ http {
 **4. 检查 [nginx][nginx] 是否配置成功**
 
 ```bash
-# 注意这个只检查语法，但是会忽略使用通配符载入的文件
+# 注意这个只检查语法，但是会忽略使用通配符引入的文件
 # 比如: include cc/*.conf, 如果 cc 文件夹不存在也不会报错
 # 但是如果是引入单个文件，文件不存在，就会报错
 nginx -t
@@ -74,13 +74,13 @@ nginx -s quit
 nginx -s reload
 ```
 
-## 本机使用任意域名访问 nginx 服务
+## 本地使用
 
 > windows/mac 修改本机 hosts 文件，推荐使用 [switchhosts][switchhosts] 软件管理本机 host
 
 ```bash
-# 可以将 example 改成任意域名
 127.0.0.1 example.com
+127.0.0.1 www.example.com
 ```
 
 在浏览器中使用 `example.com` 就可以访问到 nginx 中配置的项目了
