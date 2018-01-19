@@ -36,7 +36,7 @@ http {
 ```
 
 **2. 复制项目下的所有文件夹到 [nginx][nginx] 安装目录下**
-.
+
 **3. 配置新站点**
 
  1. 从 `site-available` 复制模板文件到 `site-enabled` 模板
